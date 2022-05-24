@@ -16,7 +16,7 @@ Structure
 		- DMS.Dataness.Templates.dll
 		- DMS.Dataness.Writers.dll
 	- Implementation (Optional depending on language and database used)
-		- DMS.Dataness.Readers.Database.MySql.dll
+		- DMS.Dataness.Readers.Database.MySql.dll (Requires: )
 		- DMS.Dataness.Readers.Database.MsSql.dll
 		- DMS.Dataness.Templates.CSharp.dll
 		- DMS.Dataness.Writers.CSharp.dll
@@ -28,7 +28,17 @@ Before starting, make sure you have a project ready for use with Dataness. You s
 
 First step in using Dataness is to create a console app to use for generating your code.
 
-Add a reference to DMS.Dataness.dll and any of the optional .dlls you need.
+Add a reference to these libraries:
+	- DMS.Dataness.dll 
+	- DMS.Dataness.Writers.dll
+	- DMS.Dataness.Templates.dll
+	- DMS.Dataness.Readers.Database.dll
+
+And any of the optional .dlls you need.
+
+Also install these packages from Nuget:
+https://www.nuget.org/packages/PluralizeService.Core/1.2.21147.2
+https://www.nuget.org/packages/MySql.Data/8.0.29 (If you're using MySql)
 
 Dataness uses the project files from the DataAccess and BusinessLogic projects, so start by mapping paths for those.
 
