@@ -67,7 +67,7 @@ DatanessGenerator generator = new DatanessGenerator(writer, sqlReader, writer.Ge
 ```
 Now you can tell the generator to parse the .dane files, you can call .Parse multiple times if you need to parse files in different locations. (Note however this feature is experimental and might cause issues if you parse more than one folder at the moment.)
 ```C#
-generator.Parse(xmlPath);
+generator.Parse(danePath);
 ```
 Last but not least, call .Generate() and the generator will now create the code for you.
 ```C#
