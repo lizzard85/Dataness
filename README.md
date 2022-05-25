@@ -217,7 +217,7 @@ I'm still working on expanding the features of the generator, so these are among
 - Caching
 - Pagination
 - Better support for manually implemented logic
-	
+- CRUD Events
 
 	
 	
