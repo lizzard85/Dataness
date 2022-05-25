@@ -115,20 +115,25 @@ Here's an example of such a file:
 At the moment there's no schema for it, but I'll add that in the future.
 
 Start by defining the root element, "entities", where you set the relative namespace for the entities in this file, this will be combined with the namespace from your DataAccess and BusinessLogic projects.
+
 Inside the entities tag, you can define one or more entities, by adding an "entity".
-The entity needs a name, this will be used as the basis for all classes, ie. UserService, UserRepository and so on.
+
+The entity needs a name, this will be used as the basis for all classes, ie. "User" for UserService, UserRepository and so on.
+
 Inside entity, start by adding the database information, "table" is the name of the table in the database we wish to map our code to. "connection" is optional, but can be used if some items should use a seperate connectionstring, if it's not added here, "db" is used as the default identifier for the connectionstring.
+
 After the db tag, add a "methods" tag, here we will define the methods we want generated.
 Method attributes:
-	- name: This is the name of the method
-	- returntype: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
-	- implementation: can be "manual" or "auto", auto is the default. A manually implemented method will create an abstract method for manual implementation.
+- name: This is the name of the method
+- returntype: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
+- implementation: can be "manual" or "auto", auto is the default. A manually implemented method will create an abstract method for manual implementation.
+
 Method child elements:
-	- query: This tag contains the query for the method
-	- param: parameters for the query, and the method
-		- name: name of the parameter, this will be used as a name for the argument passed to the method, and as a parameter in the sql query
-		- type: the type of the parameter.
-			- Supported Types: Byte, SByte, Short, UShort, Int, UInt, Long, ULong, Float, Double, Decimal, Char, Bool, Object, String, DateTime
+- query: This tag contains the query for the method
+- param: parameters for the query, and the method
+	- name: name of the parameter, this will be used as a name for the argument passed to the method, and as a parameter in the sql query
+	- type: the type of the parameter.
+		- Supported Types: Byte, SByte, Short, UShort, Int, UInt, Long, ULong, Float, Double, Decimal, Char, Bool, Object, String, DateTime
 
 That's it, now when you run the generator, your code will be ready for you.
 
@@ -138,22 +143,30 @@ Any other projects that need access to data, should add a reference to the Busin
 
 ### 5. Using the generated code
 
-- Get Service instance
+#### Get Service instance
+```C#
 var service = UserService.Instance;
+```
 
-- Create User
+#### Create User
+```C#
 var user = service.CreateUser("TestUser", "abc123", "logkey123");
 user.AutoLoginToken = "Auto123";
 int userId = service.SaveUser(user);
-
-- Load User
+```
+#### Load User
+```C#
 var newUser = service.LoadUser(userId);
+```
 
-- Update user
+#### Update user
+```C#
 newUser.Username = $"{newUser.Username} {userId}";
 service.SaveUser(newUser);
+```
 
-- Use methods Generated from .dane file
+#### Use methods Generated from .dane file
+```C#
 var allUsers = service.GetAllUsers();
 foreach (var usr in allUsers)
 {
@@ -165,27 +178,30 @@ foreach (var usr in roleUsers)
 {
 	Console.WriteLine("Admin: " + usr.Username);
 }
+```
 
-- Delete user
+#### Delete user
+```C#
 service.DeleteUser(5);
+```
 
 ### 6. Generated Structure
 The code generates 6 different entities:
-	- DataAccess
-		- DbModel
-		- Repository
-	- BusinessLogic
-		- Item
-		- ItemCollection
-		- Factory
-		- Service
+- DataAccess
+	- DbModel
+ 	- Repository
+- BusinessLogic
+	- Item
+	- ItemCollection
+	- Factory
+	- Service
 
 All of the above are generated in three layers that uses inheritance to combine the logic.
 Using the UserService as an example, the structure will be like this:
 
-	- BaseService
-		- BaseUserService
-			- UserService
+- BaseService
+	- BaseUserService
+		- UserService
 
 And this goes for all the generated types.
 
@@ -194,3 +210,14 @@ The Base<Entity>Service class is where all the methods for the entity is generat
 Lastly the <Entity>Service class is only generated if the file doesn't already exist, in this file, you can add your own functionality if needed.
 
 And again, this goes for all the different generated types, so for instance the UserRepository, UserItem, UserItemCollection are all safe to add your own functionality to.
+
+### 7. Planned Features
+I'm still working on expanding the features of the generator, so these are among others, some of the features I want to add in the near future:
+- Support for database Views
+- Caching
+- Pagination
+- Better support for manually implemented logic
+	
+
+	
+	
