@@ -79,7 +79,7 @@ The file should be named Dataness.cfg and be placed in the same folder as the .d
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <config>
-	<db connectionstring="" database="" />
+	<db connectionstring="Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;" database="myDataBase" />
 </config>
 ```
 
