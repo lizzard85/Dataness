@@ -54,6 +54,9 @@ Let try and break down the individual components of the template.
 </entities>
 ```
 
+Attributes:
+- `namespace` **\*Required\*** The namespace for all entities in this template.
+
 This is the root element for the template. The only thing required here is to add the namespace for the entities in this template, here we use "Users" as we want all classes in in this template to have the same namespace, for instance "MyProject.DataAccess.Users".
 
 ## Entity
@@ -62,8 +65,10 @@ This is the root element for the template. The only thing required here is to ad
 </entity>
 ```
 
-An entity is what we map to a table in the database, so in this case, our "User" entity will be mapped to our Users table when we generate the code.
+Attributes:
+- `name` **\*Required\*** The name of the entity
 
+An entity is what we map to a table in the database, so in this case, our "User" entity will be mapped to our Users table when we generate the code.
 The name property is used to name alle the different generated classes, so here our generated classes will be called UserItem, UserService and so on.
 
 ## DB
@@ -72,11 +77,16 @@ The name property is used to name alle the different generated classes, so here 
 <db table="Users" connection="readonly" />
 ```
 
+Attributes:
+- `table` **\*Required\*** The name of the database table, will become optional once support for views is added
+- `connection` Name of the connection to use
+
 This tag is used to tell the generator the name of the table we want to map our entity to.
 
 The "coonnection" attribute is optional and can be used when you want some entities to use a specific connection, defaults to "db".
 
 _**NOTE:** Support for database views, and entities without a table or view is coming_
+
 
 ## Uses
 
@@ -85,6 +95,10 @@ _**NOTE:** Support for database views, and entities without a table or view is c
 	<use name="DatanessTest.BusinessLogic.Users.Enums" in="Item|Factory|Service" />
 </uses>
 ```
+
+Attributes:
+- `name` **\*Required\*** the name of the reference to include.
+- `in` **\*Required\*** Where to include the reference
 
 When generating code you might need to add a reference to a namespace the generator doesn't know you need. This can be done using the "uses" element.
 
@@ -130,11 +144,18 @@ The methods tag is where we place all the methods we want generated for this ent
 The method tag is used to define the methods for the entity. You can add as many methods as you wish.
 
 Available method attributes:
-- **name**: This is the name of the method
-- **returntype**: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
-- **valuetype**: if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
-- **modifier**: The access modifier for the generated method on the service class.
+- `name` This is the name of the method
+- `returntype` can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
+- `valuetype` if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
+- `modifier` The access modifier for the generated method on the service class.
 
+### Method - Param
+```xml
+	<param name="accessLevel" type="int" />
+```
+- `name` name of the parameter, this will be used as a name for the argument passed to the method, and as a parameter in the sql query
+- `type` the type of the parameter.
+	- _Supported Types_: Byte, SByte, Short, UShort, Int, UInt, Long, ULong, Float, Double, Decimal, Char, Bool, Object, String, DateTime
 ### Method - Query
 ```xml
 	<query>
@@ -147,27 +168,3 @@ The query tag is used to provide the query needed for the repository to get the 
 ```xml
 </method>
 ```
-
-Start by defining the root element, "entities", where you set the relative namespace for the entities in this file, this will be combined with the namespace from your DataAccess and BusinessLogic projects.
-
-Inside the entities tag, you can define one or more entities, by adding an "entity".
-
-The entity needs a name, this will be used as the basis for all classes, ie. "User" for UserService, UserRepository and so on.
-
-Inside entity, start by adding the database information, "table" is the name of the table in the database we wish to map our code to. "connection" is optional, but can be used if some items should use a seperate connectionstring, if it's not added here, "db" is used as the default identifier for the connectionstring.
-
-After the db tag, add a "methods" tag, here we will define the methods we want generated.
-
-Method attributes:
-- **name**: This is the name of the method
-- **returntype**: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
-- **valuetype**: if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
-- **implementation**: can be "manual" or "auto", auto is the default. A manually implemented method will create an abstract method for manual implementation.
-
-Method child elements:
-- **query**: This tag contains the query for the method
-- **param**: parameters for the query, and the method
-	- *__name__*: name of the parameter, this will be used as a name for the argument passed to the method, and as a parameter in the sql query
-	- *__type__*: the type of the parameter.
-		- _Supported Types_: Byte, SByte, Short, UShort, Int, UInt, Long, ULong, Float, Double, Decimal, Char, Bool, Object, String, DateTime
-
