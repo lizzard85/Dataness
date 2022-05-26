@@ -1,12 +1,19 @@
 # .dane template files
 
 Dataness runs on templates defined in .dane files.
-Here's an example of such a file:
+Here's an example of such a file which maps to a User table in the database:
+
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <entities namespace="Users">
 	<entity name="User">
 		<db table="Users" connection="readonly" />
+		<uses>
+			<use name="DatalessTest.BusinessLogic.Users.Enums" in="Item|Factory|Service" />
+		</uses>
+		<columns>
+			<column name="AccessLevel" type="UserAccessLevel" nullable="false" />
+		</columns>
 		<methods>
 			<method name="GetAllUsers" returntype="list">
 				<query>
@@ -37,6 +44,61 @@ Here's an example of such a file:
 	</entity>
 </entities>
 ```
+
+Let try and break down the individual components of the template.
+
+### Entities
+```xml
+<entities namespace="Users">
+</entities>
+```
+
+This is the root element for the template. The only thing required here is to add the namespace for the entities in this template, here we use "Users" as we want all classes in in this template to have the same namespace, for instance "MyProject.DataAccess.Users".
+
+### Entity
+```xml
+<entity name="User">
+</entity>
+```
+
+An entity is what we map to a table in the database, so in this case, our "User" entity will be mapped to our Users table when we generate the code.
+
+The name property is used to name alle the different generated classes, so here our generated classes will be called UserItem, UserService and so on.
+
+### DB
+
+```xml
+<db table="Users" connection="readonly" />
+```
+
+This tag is used to tell the generator the name of the table we want to map our entity to.
+
+The "coonnection" attribute is optional and can be used when you want some entities to use a specific connection, defaults to "db".
+
+_**NOTE:** Support for database views, and entities without a table or view is coming_
+
+### Uses
+
+```xml
+<uses>
+	<use name="DatanessTest.BusinessLogic.Users.Enums" in="Item|Factory|Service" />
+</uses>
+```
+
+When generating code you might need to add a reference to a namespace the generator doesn't know you need. This can be done using the "uses" element.
+
+Since most references is only needed in specific files, like in the above example where we need a reference to an enum we're mapping a column to, you have to tell the generator which entity types needs this reference.
+
+You do this using the "in" attribute, accepted values are:
+- All
+- Factory
+- Service
+- Repository
+- Item
+- ItemCollection
+- DbModel
+
+
 At the moment there's no schema for it, but I'll add that in the future.
 
 Start by defining the root element, "entities", where you set the relative namespace for the entities in this file, this will be combined with the namespace from your DataAccess and BusinessLogic projects.
