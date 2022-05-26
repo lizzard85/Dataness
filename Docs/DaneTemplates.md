@@ -6,7 +6,8 @@ Here's an example of such a file which maps to a User table in the database:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
-<entities namespace="Users" xmlns="dataness.dane" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="Dataness.dane http://dataness.dk/Entity.xsd">
+<entities namespace="Users" xmlns="dataness.dane" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	  xsi:schemaLocation="Dataness.dane http://dataness.dk/Entity.xsd">
 	<entity name="User">
 		<db table="Users" connection="readonly" />
 		<uses>
