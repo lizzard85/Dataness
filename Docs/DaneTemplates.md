@@ -1,6 +1,7 @@
 # .dane template files
 
 Dataness runs on templates defined in .dane files.
+At the moment there's no schema for it, but I'll add that in the future.
 Here's an example of such a file which maps to a User table in the database:
 
 ```xml
@@ -47,7 +48,7 @@ Here's an example of such a file which maps to a User table in the database:
 
 Let try and break down the individual components of the template.
 
-### Entities
+## Entities
 ```xml
 <entities namespace="Users">
 </entities>
@@ -55,7 +56,7 @@ Let try and break down the individual components of the template.
 
 This is the root element for the template. The only thing required here is to add the namespace for the entities in this template, here we use "Users" as we want all classes in in this template to have the same namespace, for instance "MyProject.DataAccess.Users".
 
-### Entity
+## Entity
 ```xml
 <entity name="User">
 </entity>
@@ -65,7 +66,7 @@ An entity is what we map to a table in the database, so in this case, our "User"
 
 The name property is used to name alle the different generated classes, so here our generated classes will be called UserItem, UserService and so on.
 
-### DB
+## DB
 
 ```xml
 <db table="Users" connection="readonly" />
@@ -77,7 +78,7 @@ The "coonnection" attribute is optional and can be used when you want some entit
 
 _**NOTE:** Support for database views, and entities without a table or view is coming_
 
-### Uses
+## Uses
 
 ```xml
 <uses>
@@ -98,8 +99,54 @@ You do this using the "in" attribute, accepted values are:
 - ItemCollection
 - DbModel
 
+You can include the namespace in multiple of the generated classes by using | as a seperator, using All is the same as adding all the other options.
 
-At the moment there's no schema for it, but I'll add that in the future.
+## Columns
+
+```xml
+<columns>
+	<column name="AccessLevel" type="UserAccessLevel" nullable="false" />
+</columns>
+```
+
+You have the option to override columns, for instance if you like in this example want to change the datatype of a column to use an enum instead of an int to represent an accesslevel for the user.
+You can also override whether or not the column should be considered nullable.
+
+_**NOTE:** More options coming in the future, including creating a class based completely on these columns, instead of a database table/view_
+
+## Methods
+```xml
+<methods>
+	<method />
+</methods>
+```
+
+The methods tag is where we place all the methods we want generated for this entity.
+
+## Method
+```xml
+<method name="GetAllUsers" returntype="list">
+```
+The method tag is used to define the methods for the entity. You can add as many methods as you wish.
+
+Available method attributes:
+- **name**: This is the name of the method
+- **returntype**: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
+- **valuetype**: if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
+- **modifier**: The access modifier for the generated method on the service class.
+
+### Method - Query
+```xml
+	<query>
+		SELECT * FROM Users
+	</query>
+```
+
+The query tag is used to provide the query needed for the repository to get the data, for instance a sql query when generating code with a sql database as the datasource.
+
+```xml
+</method>
+```
 
 Start by defining the root element, "entities", where you set the relative namespace for the entities in this file, this will be combined with the namespace from your DataAccess and BusinessLogic projects.
 
