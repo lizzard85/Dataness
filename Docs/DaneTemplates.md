@@ -152,7 +152,7 @@ The methods tag is where we place all the methods we want generated for this ent
 The method tag is used to define the methods for the entity. You can add as many methods as you wish.
 
 Available method attributes:
-- `name` This is the name of the method
+- `name` **\*Required\*** This is the name of the method
 - `returntype` can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
 - `valuetype` if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
 - `modifier` The access modifier for the generated method on the service class.
