@@ -26,12 +26,12 @@ This guide is based on the C# implementation, with one of the included database 
 ## Prerequisite
 Before starting, make sure you have a project ready for use with Dataness. You should create two class libraries in your project, one for DataAccess and one for BusinessLogic.
 
-Add the following refernces to your DataAccess project:
+Add the following references to your DataAccess project:
 - [MySql.Data](https://www.nuget.org/packages/MySql.Data/8.0.29) (If you're using MySql)
 - [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/4.8.3) (If you're using MsSql OR MySql)
 - System.Configuration.ConfigurationManager might also be required, I think it depends on what type of project you're using
 
-Add the following refernces to your DataAccess project:
+Add the following references to your BusinessLogic project:
 - Your DataAcccess project
 
 ### 1. Setting up the generator
