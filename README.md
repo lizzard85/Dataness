@@ -67,7 +67,7 @@ DatanessGenerator generator = new DatanessGenerator(writer, sqlReader, writer.Ge
 ```
 Now you can tell the generator to parse the .dane files, you can call .Parse multiple times if you need to parse files in different locations. (Note however this feature is experimental and might cause issues if you parse more than one folder at the moment.)
 ```C#
-generator.Parse(danePath);
+generator.Parse(xmlPath);
 ```
 Last but not least, call .Generate() and the generator will now create the code for you.
 ```C#
@@ -79,7 +79,7 @@ The file should be named Dataness.cfg and be placed in the same folder as the .d
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <config>
-	<db connectionstring="Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;" database="myDataBase" />
+	<db connectionstring="" database="" />
 </config>
 ```
 
@@ -95,6 +95,8 @@ Here's an example of such a file:
 		<db table="Users" connection="readonly" />
 		<methods>
 			<method name="GetAllUsers" returntype="list">
+				<cache expiration="absolute" timeout="300" />
+				<pagination />
 				<query>
 					SELECT * FROM Users
 				</query>
@@ -102,7 +104,18 @@ Here's an example of such a file:
 			<method name="GetUsersByAccessLevel" returntype="list">
 				<param name="accessLevel" type="int" />
 				<query>
-					SELECT * FROM $table WHERE AccessLevel = @accessLevel
+					SELECT * FROM Users WHERE AccessLevel = @accessLevel
+				</query>
+			</method>
+			<method name="GetAccessLevelsInUse" returntype="list" valuetype="int">
+				<query>
+					SELECT DISTINCT AccessLevel FROM Users
+				</query>
+			</method>
+			<method name="GetUserAccessLevel" returntype="single" valuetype="int">
+				<param name="userId" type="int" />
+				<query>
+					SELECT AccessLevel FROM Users WHERE ID = @userId
 				</query>
 			</method>
 			<method name="GetUsersByType" implementation="Manual">
@@ -126,6 +139,7 @@ After the db tag, add a "methods" tag, here we will define the methods we want g
 Method attributes:
 - name: This is the name of the method
 - returntype: can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
+- valuetype: if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
 - implementation: can be "manual" or "auto", auto is the default. A manually implemented method will create an abstract method for manual implementation.
 
 Method child elements:
@@ -217,7 +231,7 @@ I'm still working on expanding the features of the generator, so these are among
 - Caching
 - Pagination
 - Better support for manually implemented logic
-- CRUD Events
+	
 
 	
 	
