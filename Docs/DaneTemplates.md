@@ -165,7 +165,7 @@ Available method attributes:
 - `name` name of the parameter, this will be used as a name for the argument passed to the method, and as a parameter in the sql query
 - `type` the type of the parameter.
 	- _Supported Types_: Byte, SByte, Short, UShort, Int, UInt, Long, ULong, Float, Double, Decimal, Char, Bool, Object, String, DateTime
-	- Custom types are also allowed, for instance an enum instead of an int, but for that to work, the column the parameter is targeting, must be overwritten with the same type via a column override.
+	- Custom types are also allowed, for instance an enum instead of an int, but for that to work, the column the parameter is targeting, must be overwritten with the same type via a [Column override](#columns).
 
 ### Method - Query
 ```xml
