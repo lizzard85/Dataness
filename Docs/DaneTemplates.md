@@ -156,6 +156,7 @@ Available method attributes:
 - `returntype` can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
 - `valuetype` if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
 - `modifier` The access modifier for the generated method on the service class.
+- `implementation` How the method should be implemented, options are "Manual" or "Auto", the default value is "Auto". Auto means the generator makes all the code for you, Manual means the generator just adds an abstract method which you'll then need to implement yourself.
 
 ### Method - Param
 ```xml

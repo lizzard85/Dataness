@@ -5,6 +5,7 @@ __&ast;&ast;NOTE This project is still under development, and still needs a lot 
 Dataness is a code generator that creates code for DataAccess and BusinessLogic.
 Out of the box the library comes with support for C# language and MsSql and MySql databases.
 It's possible to extend the library and use it with other programming languages and databases.
+
 This guide is based on the C# implementation, with one of the included database schema readers.
 
 ## DLL Structure 
@@ -25,6 +26,14 @@ This guide is based on the C# implementation, with one of the included database 
 ## Prerequisite
 Before starting, make sure you have a project ready for use with Dataness. You should create two class libraries in your project, one for DataAccess and one for BusinessLogic.
 
+Add the following references to your DataAccess project:
+- [MySql.Data](https://www.nuget.org/packages/MySql.Data/8.0.29) (If you're using MySql)
+- [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/4.8.3) (If you're using MsSql OR MySql)
+- System.Configuration.ConfigurationManager might also be required, I think it depends on what type of project you're using
+
+Add the following references to your BusinessLogic project:
+- Your DataAcccess project
+
 ### 1. Setting up the generator
 
 First step in using Dataness is to create a console app to use for generating your code.
@@ -35,12 +44,21 @@ Add a reference to these libraries:
 - DMS.Dataness.Templates.dll
 - DMS.Dataness.Readers.Database.dll
 
-And any of the optional .dlls you need.
+To Generate C# code, add a reference to these libraries:
+- DMS.Dataness.Templates.CSharp.dll
+- DMS.Dataness.Writers.CSharp.dll
+
+For MsSql Support, add a reference to
+- DMS.Dataness.Readers.Database.MsSql.dll
+
+For MySql Support, add a reference to
+- DMS.Dataness.Readers.Database.MySql.dll
 
 Also install these packages from Nuget:
 
 - [PluralizeService.Core](https://www.nuget.org/packages/PluralizeService.Core/1.2.21147.2)
 - [MySql.Data](https://www.nuget.org/packages/MySql.Data/8.0.29) (If you're using MySql)
+- [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/4.8.3) (If you're using MsSql)
 
 Dataness uses the project files from the DataAccess and BusinessLogic projects, so start by mapping paths for those.
 ```C#
@@ -73,6 +91,7 @@ Last but not least, call .Generate() and the generator will now create the code 
 ```C#
 generator.Generate();
 ```
+
 ### 2. Create a config file
 First off we need to create a config file for Dataness, for now it just holds the connectionstring for the database schema reader.
 The file should be named Dataness.cfg and be placed in the same folder as the .dane template files.
