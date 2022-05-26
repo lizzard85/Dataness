@@ -95,8 +95,6 @@ Here's an example of such a file:
 		<db table="Users" connection="readonly" />
 		<methods>
 			<method name="GetAllUsers" returntype="list">
-				<cache expiration="absolute" timeout="300" />
-				<pagination />
 				<query>
 					SELECT * FROM Users
 				</query>
