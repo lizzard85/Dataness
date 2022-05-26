@@ -119,12 +119,20 @@ You can include the namespace in multiple of the generated classes by using | as
 
 ```xml
 <columns>
-	<column name="AccessLevel" type="UserAccessLevel" nullable="false" />
-</columns>
+	<column />
+</columns>	
 ```
-
 You have the option to override columns, for instance if you like in this example want to change the datatype of a column to use an enum instead of an int to represent an accesslevel for the user.
 You can also override whether or not the column should be considered nullable.
+
+### Columns - Column
+```xml
+	<column name="AccessLevel" type="UserAccessLevel" nullable="false" />
+```
+Attributes:
+- `name` **\*Required\*** the name of the column.
+- `type` type of the column
+- `nullable` whether or not the column is nullable, true|false.
 
 _**NOTE:** More options coming in the future, including creating a class based completely on these columns, instead of a database table/view_
 
@@ -164,7 +172,3 @@ Available method attributes:
 ```
 
 The query tag is used to provide the query needed for the repository to get the data, for instance a sql query when generating code with a sql database as the datasource.
-
-```xml
-</method>
-```
