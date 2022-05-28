@@ -168,6 +168,8 @@ Attributes:
 - `timeout` **\*Required\*** the expiration time for the cache, in seconds.
 - `type` type of expiration, accepted values are "sliding" and "absolute" *(Default: absolute)*
 
+When caching is added, a cached version of your method is generated. Intead of items, this will return read only interfaces.
+For more information about these interfaces, and information on how to extend them, have a look [here](ReadonlyInterfaces.md).
 
 ### Method - Param
 ```xml
