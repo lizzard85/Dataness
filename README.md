@@ -98,7 +98,7 @@ The file should be named Dataness.cfg and be placed in the same folder as the .d
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <config xmlns="dataness.cfg" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="Dataness.cfg http://dataness.dk/Config.xsd">
+	xsi:schemaLocation="Dataness.cfg http://schema.dataness.dk/Config.xsd">
 	<db connectionstring="" database="" />
 </config>
 ```
@@ -111,7 +111,7 @@ Here's an example of such a file:
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <entities namespace="Users" xmlns="dataness.dane" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	  xsi:schemaLocation="Dataness.dane http://dataness.dk/Entity.xsd">
+	  xsi:schemaLocation="Dataness.dane http://schema.dataness.dk/Entity.xsd">
 	<entity name="User">
 		<db table="Users" connection="readonly" />
 		<methods>
