@@ -6,7 +6,7 @@ Out of the box the library comes with support for C# language and MsSql and MySq
 
 It's possible to extend the library and use it for generating code in other programming languages and databases.
 
-[Download on Github](https://github.com/lizzard85/Dataness/releases/latest)
+[Download on GitHub](https://github.com/lizzard85/Dataness/releases/latest)
 
 ## Planned Features
 
