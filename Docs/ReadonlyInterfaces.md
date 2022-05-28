@@ -1,4 +1,4 @@
-# Read Only Interfaces 
+# C\# Read Only Interfaces 
 
 When generating cached methods, Dataness returns read only interfaces instead of the underlying item class.
 For instance a UserItem will be returned as a IUserReadOnly interface insted.
