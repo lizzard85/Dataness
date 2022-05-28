@@ -18,6 +18,7 @@ Here's an example of such a file which maps to a User table in the database:
 		</columns>
 		<methods>
 			<method name="GetAllUsers" returntype="list">
+				<cache timeout="60" type="sliding"/>
 				<query>
 					SELECT * FROM Users
 				</query>
@@ -80,11 +81,11 @@ The name property is used to name alle the different generated classes, so here 
 
 Attributes:
 - `table` **\*Required\*** The name of the database table, will become optional once support for views is added
-- `connection` Name of the connection to use
+- `connection` Name of the connection to use *(default: "db")*
 
 This tag is used to tell the generator the name of the table we want to map our entity to.
 
-The "coonnection" attribute is optional and can be used when you want some entities to use a specific connection, defaults to "db".
+The "connection" attribute is optional and can be used when you want some entities to use a specific connection.
 
 _**NOTE:** Support for database views, and entities without a table or view is coming_
 
@@ -154,10 +155,19 @@ The method tag is used to define the methods for the entity. You can add as many
 
 Available method attributes:
 - `name` **\*Required\*** This is the name of the method
-- `returntype` can be "list" or "single", determines whether the function returns a collection of items, or a single item. "list" is the default option.
+- `returntype` can be "list" or "single", determines whether the function returns a collection of items, or a single item. *(default: list)*
 - `valuetype` if you wish to return a single value, or a list of single values, you can add a valuetype to the method. This supports the same types as the type on parameters.
-- `modifier` The access modifier for the generated method on the service class.
-- `implementation` How the method should be implemented, options are "Manual" or "Auto", the default value is "Auto". Auto means the generator makes all the code for you, Manual means the generator just adds an abstract method which you'll then need to implement yourself.
+- `modifier` The access modifier for the generated method on the service class. *(default: "public")*
+- `implementation` How the method should be implemented, options are "manual" or "auto". Auto means the generator makes all the code for you, Manual means the generator just adds an abstract method which you'll then need to implement yourself. *(default: auto)*
+
+### Method - Cache
+```xml
+<cache timeout="60" type="sliding"/>
+```
+Attributes:
+- `timeout` **\*Required\*** the expiration time for the cache, in seconds.
+- `type` type of expiration, accepted values are "sliding" and "absolute" *(Default: absolute)*
+
 
 ### Method - Param
 ```xml
