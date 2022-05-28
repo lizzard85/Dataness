@@ -1,1 +1,3 @@
 theme: jekyll-theme-midnight
+title: Dataness
+description: Dataness is a code generator, used to generate DataAccess and BusinessLogic code.
