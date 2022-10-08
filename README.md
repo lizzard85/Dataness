@@ -6,6 +6,4 @@ Dataness is a code generator that creates code for DataAccess and BusinessLogic.
 Out of the box the library comes with support for C# language and MsSql and MySql databases.
 It's possible to extend the library and use it with other programming languages and databases.
 
-This guide is based on the C# implementation, with one of the included database schema readers.
-
 To get started, have a look in the Wiki for the documentation.
