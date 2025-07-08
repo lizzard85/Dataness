@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "DMS.Dataness.Generator/1.5.0": {
+      "DMS.Dataness.Generator/1.5.1": {
         "dependencies": {
-          "DMS.Dataness": "1.5.0",
-          "DMS.Dataness.Readers.Database.MsSql": "1.5.0",
-          "DMS.Dataness.Readers.Database.MySql": "1.5.0",
-          "DMS.Dataness.Templates.CSharp": "1.5.0",
-          "DMS.Dataness.Templates.CSharp.MsSql": "1.5.0",
-          "DMS.Dataness.Templates.CSharp.MySql": "1.5.0",
-          "DMS.Dataness.Writers.CSharp": "1.5.0",
+          "DMS.Dataness": "1.5.1",
+          "DMS.Dataness.Readers.Database.MsSql": "1.5.1",
+          "DMS.Dataness.Readers.Database.MySql": "1.5.1",
+          "DMS.Dataness.Templates.CSharp": "1.5.1",
+          "DMS.Dataness.Templates.CSharp.MsSql": "1.5.1",
+          "DMS.Dataness.Templates.CSharp.MySql": "1.5.1",
+          "DMS.Dataness.Writers.CSharp": "1.5.1",
           "DMS.Utils.CasingStyleConverter": "1.0.0.0"
         },
         "runtime": {
@@ -216,112 +216,151 @@
           "System.Drawing.Common": "4.7.0"
         }
       },
-      "DMS.Dataness/1.5.0": {
+      "DMS.Dataness/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Common": "1.5.0",
-          "DMS.Dataness.Readers.Database": "1.5.0",
-          "DMS.Dataness.Readers.Xml": "1.5.0",
-          "DMS.Dataness.Writers": "1.5.0"
+          "DMS.Dataness.Common": "1.5.1",
+          "DMS.Dataness.Readers.Database": "1.5.1",
+          "DMS.Dataness.Readers.Xml": "1.5.1",
+          "DMS.Dataness.Writers": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.dll": {}
+          "DMS.Dataness.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Common/1.5.0": {
+      "DMS.Dataness.Common/1.5.1": {
         "runtime": {
-          "DMS.Dataness.Common.dll": {}
+          "DMS.Dataness.Common.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.DataTypes/1.5.0": {
+      "DMS.Dataness.DataTypes/1.5.1": {
         "runtime": {
-          "DMS.Dataness.DataTypes.dll": {}
+          "DMS.Dataness.DataTypes.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Readers.Database/1.5.0": {
+      "DMS.Dataness.Readers.Database/1.5.1": {
         "runtime": {
-          "DMS.Dataness.Readers.Database.dll": {}
+          "DMS.Dataness.Readers.Database.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Readers.Database.MsSql/1.5.0": {
+      "DMS.Dataness.Readers.Database.MsSql/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Readers.Database": "1.5.0",
+          "DMS.Dataness.Readers.Database": "1.5.1",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {
-          "DMS.Dataness.Readers.Database.MsSql.dll": {}
+          "DMS.Dataness.Readers.Database.MsSql.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Readers.Database.MySql/1.5.0": {
+      "DMS.Dataness.Readers.Database.MySql/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Readers.Database": "1.5.0",
+          "DMS.Dataness.Readers.Database": "1.5.1",
           "MySql.Data": "8.0.29"
         },
         "runtime": {
-          "DMS.Dataness.Readers.Database.MySql.dll": {}
+          "DMS.Dataness.Readers.Database.MySql.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Readers.Xml/1.5.0": {
+      "DMS.Dataness.Readers.Xml/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Common": "1.5.0",
+          "DMS.Dataness.Common": "1.5.1",
           "PluralizeService.Core": "1.2.21147.2"
         },
         "runtime": {
-          "DMS.Dataness.Readers.Xml.dll": {}
+          "DMS.Dataness.Readers.Xml.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Templates/1.5.0": {
+      "DMS.Dataness.Templates/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Common": "1.5.0"
+          "DMS.Dataness.Common": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.Templates.dll": {}
+          "DMS.Dataness.Templates.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Templates.CSharp/1.5.0": {
+      "DMS.Dataness.Templates.CSharp/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Templates": "1.5.0"
+          "DMS.Dataness.Templates": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.Templates.CSharp.dll": {}
+          "DMS.Dataness.Templates.CSharp.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Templates.CSharp.MsSql/1.5.0": {
+      "DMS.Dataness.Templates.CSharp.MsSql/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.DataTypes": "1.5.0",
-          "DMS.Dataness.Templates": "1.5.0"
+          "DMS.Dataness.DataTypes": "1.5.1",
+          "DMS.Dataness.Templates": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.Templates.CSharp.MsSql.dll": {}
+          "DMS.Dataness.Templates.CSharp.MsSql.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Templates.CSharp.MySql/1.5.0": {
+      "DMS.Dataness.Templates.CSharp.MySql/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.DataTypes": "1.5.0"
+          "DMS.Dataness.DataTypes": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.Templates.CSharp.MySql.dll": {}
+          "DMS.Dataness.Templates.CSharp.MySql.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Writers/1.5.0": {
+      "DMS.Dataness.Writers/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Common": "1.5.0",
-          "DMS.Dataness.DataTypes": "1.5.0",
-          "DMS.Dataness.Readers.Database": "1.5.0",
-          "DMS.Dataness.Readers.Xml": "1.5.0",
-          "DMS.Dataness.Templates": "1.5.0",
+          "DMS.Dataness.Common": "1.5.1",
+          "DMS.Dataness.DataTypes": "1.5.1",
+          "DMS.Dataness.Readers.Database": "1.5.1",
+          "DMS.Dataness.Readers.Xml": "1.5.1",
+          "DMS.Dataness.Templates": "1.5.1",
           "PluralizeService.Core": "1.2.21147.2"
         },
         "runtime": {
-          "DMS.Dataness.Writers.dll": {}
+          "DMS.Dataness.Writers.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
-      "DMS.Dataness.Writers.CSharp/1.5.0": {
+      "DMS.Dataness.Writers.CSharp/1.5.1": {
         "dependencies": {
-          "DMS.Dataness.Templates.CSharp.MsSql": "1.5.0",
-          "DMS.Dataness.Writers": "1.5.0"
+          "DMS.Dataness.Templates.CSharp.MsSql": "1.5.1",
+          "DMS.Dataness.Writers": "1.5.1"
         },
         "runtime": {
-          "DMS.Dataness.Writers.CSharp.dll": {}
+          "DMS.Dataness.Writers.CSharp.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
         }
       },
       "DMS.Utils.CasingStyleConverter/1.0.0.0": {
@@ -343,7 +382,7 @@
     }
   },
   "libraries": {
-    "DMS.Dataness.Generator/1.5.0": {
+    "DMS.Dataness.Generator/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -530,67 +569,67 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
-    "DMS.Dataness/1.5.0": {
+    "DMS.Dataness/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Common/1.5.0": {
+    "DMS.Dataness.Common/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.DataTypes/1.5.0": {
+    "DMS.Dataness.DataTypes/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Readers.Database/1.5.0": {
+    "DMS.Dataness.Readers.Database/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Readers.Database.MsSql/1.5.0": {
+    "DMS.Dataness.Readers.Database.MsSql/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Readers.Database.MySql/1.5.0": {
+    "DMS.Dataness.Readers.Database.MySql/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Readers.Xml/1.5.0": {
+    "DMS.Dataness.Readers.Xml/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Templates/1.5.0": {
+    "DMS.Dataness.Templates/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Templates.CSharp/1.5.0": {
+    "DMS.Dataness.Templates.CSharp/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Templates.CSharp.MsSql/1.5.0": {
+    "DMS.Dataness.Templates.CSharp.MsSql/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Templates.CSharp.MySql/1.5.0": {
+    "DMS.Dataness.Templates.CSharp.MySql/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Writers/1.5.0": {
+    "DMS.Dataness.Writers/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DMS.Dataness.Writers.CSharp/1.5.0": {
+    "DMS.Dataness.Writers.CSharp/1.5.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
